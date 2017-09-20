@@ -41,7 +41,7 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-gem :test do
+group :test do
   gem 'capybara'
 end
 
