@@ -59,3 +59,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'react-rails'
 gem 'haml'
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'

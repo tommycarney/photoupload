@@ -1,1 +1,15 @@
 %h1 React Photos
+
+%h2 photos
+
+%h3 Upload photos
+
+= form_for @photo, remote: true do |f|
+  = f.label "Enter image url"
+  = f.text_field :url
+  = f.label "Enter Alt text"
+  = f.text_field :alt_text
+  = f.submit 'Upload Photo'
+
+#photos
+  =render 'photos'
