@@ -5,8 +5,12 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.create(photo_params)
-    @photos = Photo.order('created_at')
+    @photo = Photo.new(photo_params)
+    if @photo.save
+      render json: @photo
+    else
+      render json: @photo.errors, status: :unprocessable_entity
+    end
   end
 
   private
