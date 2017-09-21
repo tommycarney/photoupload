@@ -23,7 +23,6 @@ var Photos = React.createClass({
      contentType: false,
    }).done(function(data){
               this.addNewPhoto(data);
-              this.forceUpdate();
             }.bind(this));
 
   },
@@ -41,6 +40,7 @@ var Photos = React.createClass({
                    onUserInput={this.handleUserInput}
                    onFormSubmit={this.handleFormSubmit} />
         <PhotosList photos={this.state.photos} />
+
       </div>
     )
   }
