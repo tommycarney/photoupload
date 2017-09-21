@@ -65,3 +65,5 @@ gem 'aws-sdk', '~> 2'
 gem 'figaro'
 gem 'jquery-fileupload-rails'
 gem 'awesome_print'
+
+gem 'mini_racer', platforms: :ruby
