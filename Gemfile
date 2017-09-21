@@ -57,7 +57,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'react-rails'
+gem 'react_on_rails', '6.4.2'
 gem 'haml'
 gem 'paperclip'
 gem 'aws-sdk-v1'
@@ -65,4 +65,3 @@ gem 'aws-sdk', '~> 2'
 gem 'figaro'
 gem 'jquery-fileupload-rails'
 gem 'awesome_print'
-gem 'devise'
