@@ -4,7 +4,9 @@ var Photos = React.createClass({
     return {
       photos: this.props.photos,
       url: 'Enter a url',
-      alt_text: 'Enter the alt text'
+      alt_text: 'Enter the alt text',
+      image: {}
+
     }
   },
 
@@ -12,13 +14,12 @@ var Photos = React.createClass({
     this.setState(obj);
   },
 
-  handleFormSubmit: function(){
-    var photo = {url: this.state.url, alt_text: this.state.alt_text};
-    $.post('/photos',
-            {photo: photo})
-            .done(function(data){
-              this.addNewPhoto(data);
-            }.bind(this));
+  handleFormSubmit: function(formData){
+
+    var photo = { "photos": { formData } };
+
+            );
+
   },
 
   addNewPhoto: function(photo) {
@@ -29,8 +30,8 @@ var Photos = React.createClass({
   render: function() {
     return (
       <div>
-        <PhotoForm input_url={this.state.url}
-                   input_alt_text={this.state.alt_text}
+        <PhotoForm url={this.state.url}
+                   alt_text={this.state.alt_text}
                    onUserInput={this.handleUserInput}
                    onFormSubmit={this.handleFormSubmit} />
         <PhotosList photos={this.state.photos} />
