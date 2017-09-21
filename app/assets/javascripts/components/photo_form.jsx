@@ -23,7 +23,6 @@ var PhotoForm = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
     var form = e.target
-    var formData = new FormData(form);
     this.props.onFormSubmit(form);
   },
   render: function(){
@@ -33,7 +32,7 @@ var PhotoForm = React.createClass({
         <form onSubmit={this.handleSubmit} encType='multipart/form-data'>
           <input name="url" placeholder="Enter image url" value={this.props.url} onChange={this.handleChange} />
           <input name="alt_text" placeholder="Enter Alt text" value={this.props.alt_text} onChange={this.handleChange} />
-          <input type="file" name="image" onChange={this.handleFileChange} />
+          <input type="file" name="image"  onChange={this.handleFileChange} />
           <input type="submit" value="Upload Photo" />
         </form>
       </div>

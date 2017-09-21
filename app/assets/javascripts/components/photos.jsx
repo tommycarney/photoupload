@@ -4,8 +4,7 @@ var Photos = React.createClass({
     return {
       photos: this.props.photos,
       url: 'Enter a url',
-      alt_text: 'Enter the alt text',
-      image: {}
+      alt_text: 'Enter the alt text'
 
     }
   },
@@ -14,11 +13,18 @@ var Photos = React.createClass({
     this.setState(obj);
   },
 
-  handleFormSubmit: function(formData){
-
-    var photo = { "photos": { formData } };
-
-            );
+  handleFormSubmit: function(form){
+    var formData = new FormData(form);
+    $.ajax({
+     url: "/photos",
+     type: "POST",
+     data: formData,
+     processData: false,
+     contentType: false,
+   }).done(function(data){
+              this.addNewPhoto(data);
+              this.forceUpdate();
+            }.bind(this));
 
   },
 
