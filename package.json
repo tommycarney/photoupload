@@ -10,5 +10,13 @@
     "postinstall": "cd client && npm install",
     "rails-server": "echo 'visit http://localhost:3000/hello_world' && foreman start -f Procfile.dev",
     "test": "rspec"
+  },
+  "dependencies": {
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-fine-uploader": "^1.0.3"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.18.2"
   }
 }

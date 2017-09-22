@@ -1,19 +1,18 @@
 import React from 'react';
-import PhotoForm from './photo_form';
 import { PhotosList } from './photos_list';
-import update from 'immutability-helper';
+
 
 
 
 export default class Photos extends React.Component {
 
-    constructor (props) {
-     super(props)
+    constructor(props, railsContext) {
+     super(props);
       this.state = {
         photos: this.props.photos,
         url: 'Enter a url',
         alt_text: 'Enter the alt text'
-      }
+      };
     }
 
     handleUserInput (obj) {
@@ -42,10 +41,6 @@ export default class Photos extends React.Component {
     render () {
       return (
         <div>
-          <PhotoForm
-                   onFileChange={this.handleUserInput.bind(this)}
-                   onFormSubmit={this.handleFormSubmit.bind(this)}
-                     />
           <PhotosList photos={this.state.photos} />
 
         </div>

@@ -13,8 +13,7 @@ const config = {
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
     'babel-polyfill',
-    './app/bundles/Photos/startup/registration',
-    './app/bundles/Photos/components/photos'
+    './app/bundles/Photos/startup/registration'
   ],
 
   output: {
@@ -47,6 +46,8 @@ const config = {
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+       { test: /\.css$/,
+         loader: "style-loader!css-loader" },
     ],
   },
 };

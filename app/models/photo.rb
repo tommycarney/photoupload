@@ -6,9 +6,4 @@ class Photo < ApplicationRecord
 
   validates_attachment_content_type :image, content_type: /\image\/.*\z/
 
-def s3_credentials
-  {bucket: ENV['S3_BUCKET'], access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_ACCESS_KEY'], s3_region: ENV['AWS_REGION']}
-end
-
-
 end
