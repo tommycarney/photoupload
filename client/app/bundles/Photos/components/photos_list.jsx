@@ -1,12 +1,11 @@
 import React from 'react';
-
-import { Photo } from './photo'
+import Photo from './photo'
 
 export const PhotosList = ({photos}) =>
-      <div>
-        {photos.map(function(photo) {
-          return (
-            <Photo photo={photo} key={photo.id} />
-          )
-        })}
-      </div>
+  <div>
+    {photos.map(function(photo) {
+      return (
+        <Photo photo={photo} key={photo.id} />
+      )
+    })}
+  </div>
