@@ -5,5 +5,6 @@ class Photo < ApplicationRecord
                     storage: :s3
 
   validates_attachment_content_type :image, content_type: /\image\/.*\z/
+  belongs_to :user
 
 end

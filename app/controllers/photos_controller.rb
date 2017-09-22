@@ -1,6 +1,8 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @photos = Photo.all.map {|p| {"url": p.image.url(:thumb), "id": p.id }}
+    @photos = current_user.photos.all.map {|p| {"url": p.image.url(:thumb), "id": p.id }}
     @photo = Photo.new
     respond_to do |format|
       format.html
@@ -9,7 +11,7 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-   photo = Photo.find_by(params[:id])
+   photo = current_user.photos.find_by(params[:id])
    if photo.destroy
       head :no_content, status: :ok
     else
@@ -32,6 +34,7 @@ class PhotosController < ApplicationController
     @photo.alt_text = params[:qqfilename]
     @photo.qquuid = params[:qquuid]
     @photo.image = params[:qqfile]
+    @photo.user_id = current_user.id
 
     if @photo.save
        respond_to do |format|
@@ -49,8 +52,8 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
-    @photos = Photo.all.map {|p| {"url": p.image.url(:thumb), "id": p.id }}
+    @photo = current_user.photos.find(params[:id])
+    @photos = current_user.photos.all.map {|p| {"url": p.image.url(:thumb), "id": p.id }}
 
     respond_to do |format|
         format.html { render :index }
