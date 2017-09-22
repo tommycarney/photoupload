@@ -1,17 +1,19 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.all.map {|p| {"url": p.image.url, "id": p.id }}
+    @photos = Photo.all.map {|p| {"url": p.image.url(:thumb), "id": p.id }}
     @photo = Photo.new
+    respond_to do |format|
+      format.html
+      format.json { render json: @photos }
+    end
   end
 
   def destroy
-   photo = Photo.find_by(qquuid: params[:qquuid])
+   photo = Photo.find_by(params[:id])
    if photo.destroy
-      respond_to do |format|
-         format.json {
-            render json: { success: true }
-         }
-      end
+      head :no_content, status: :ok
+    else
+      render json: @photo.errors, status: :unprocessable_entity
     end
  end
 
@@ -34,7 +36,7 @@ class PhotosController < ApplicationController
     if @photo.save
        respond_to do |format|
           format.json {
-             render json: { success: true, photo: {"url": @photo.image.url, "id": @photo.id } }
+             render json: { success: true, photo: {"url": @photo.image.url(:thumb), "id": @photo.id } }
           }
        end
      else
@@ -44,6 +46,17 @@ class PhotosController < ApplicationController
          }
        end
      end
+  end
+
+  def show
+    @photo = Photo.find(params[:id])
+    @photos = Photo.all.map {|p| {"url": p.image.url(:thumb), "id": p.id }}
+
+    respond_to do |format|
+        format.html { render :index }
+        format.json {   render json: {"url": @photo.image.url, "id": @photo.id, "photos": @photos } }
+    end
+
   end
 
 
