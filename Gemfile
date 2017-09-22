@@ -67,3 +67,4 @@ gem 'jquery-fileupload-rails'
 gem 'awesome_print'
 
 gem 'mini_racer', platforms: :ruby
+gem 'bootstrap', '~> 4.0.0.beta'

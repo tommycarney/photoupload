@@ -49,7 +49,7 @@ class UploadComponent extends React.Component {
     render() {
       const photos = this.state.photos.map((photo) =>
          <div className="card" key={photo.id}>
-           <img src={photo.url} className="image-responsive"></img>
+           <img src={photo.url} className="image-responsive" ></img>
            <p className="card-text">{photo.id}</p>
          </div>
        );
@@ -64,7 +64,7 @@ class UploadComponent extends React.Component {
             </div>
             <section className="jumbotron text-xs-center">
               <div className="container">
-                <h1 className="jumbotron-heading">Photos Example App</h1>
+                <h1 className="jumbotron-heading">Photos App</h1>
                 <p className="lead text-muted">This is example app integrated ReactFineUploader with Ruby on Rails</p>
                 <Gallery uploader={ uploader } />
               </div>

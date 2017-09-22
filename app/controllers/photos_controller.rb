@@ -34,7 +34,7 @@ class PhotosController < ApplicationController
     if @photo.save
        respond_to do |format|
           format.json {
-             render json: { success: true, photo: @photo }
+             render json: { success: true, photo: {"url": @photo.image.url, "id": @photo.id } }
           }
        end
      else
