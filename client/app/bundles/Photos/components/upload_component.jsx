@@ -79,16 +79,14 @@ class UploadComponent extends React.Component {
             </div>
             <section className="jumbotron text-xs-center">
               <div className="container">
-                <h1 className="jumbotron-heading">Photos App</h1>
-                <p className="lead text-muted">This is example app integrated ReactFineUploader with Ruby on Rails</p>
+                <h1 className="jumbotron-heading">Upload Your Photos</h1>
+                <p className="lead text-muted">Drag and drop photos to start uploading them</p>
                 <Gallery uploader={ uploader } />
               </div>
             </section>
             <div className="album text-muted">
               <div className="container">
-                <div className="row">
                 <PhotosList photos={this.state.photos} />
-                </div>
               </div>
             </div>
           </div>

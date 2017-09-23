@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @photos = current_user.photos.all.map {|p| {"url": p.image.url(:thumb), "id": p.id }}
+    @photos = Photo.photos_from_user(current_user.id)
     @photo = Photo.new
     respond_to do |format|
       format.html
@@ -39,7 +39,7 @@ class PhotosController < ApplicationController
     if @photo.save
        respond_to do |format|
           format.json {
-             render json: { success: true, photo: {"url": @photo.image.url(:thumb), "id": @photo.id } }
+             render json: { success: true, photo: Photo.photo_to_json(photo: @photo, size: :thumb) }
           }
        end
      else
@@ -53,13 +53,12 @@ class PhotosController < ApplicationController
 
   def show
     @photo = current_user.photos.find(params[:id])
-    @photos = current_user.photos.all.map {|p| {"url": p.image.url(:thumb), "id": p.id }}
+    @photos = Photo.photos_from_user(current_user.id)
 
     respond_to do |format|
         format.html { render :index }
-        format.json {   render json: {"url": @photo.image.url, "id": @photo.id, "photos": @photos } }
+        format.json {   render json: Photo.photo_to_json(photo: @photo), "photos": @photos }
     end
-
   end
 
 

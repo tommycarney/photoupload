@@ -31,7 +31,7 @@ export default class Photo extends React.Component {
 
   render () {
     return (
-      <div className='card'>
+      <div className="m-2">
         <Link to={`/photos/${this.state.photo.id}`} >
           <img src={this.state.photo.url} className="image-responsive" ></img>
         </Link>
