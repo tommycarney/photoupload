@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @photos = Photo.photos_from_user(current_user.id)
+    @photos = Photo.photos_to_json(current_user.id)
     @photo = Photo.new
     respond_to do |format|
       format.html
@@ -53,7 +53,7 @@ class PhotosController < ApplicationController
 
   def show
     @photo = current_user.photos.find(params[:id])
-    @photos = Photo.photos_from_user(current_user.id)
+    @photos = Photo.photos_to_json(current_user.id)
 
     respond_to do |format|
         format.html { render :index }

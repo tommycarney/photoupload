@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 
 import FineUploaderTraditional from 'fine-uploader-wrappers';
 import Gallery from 'react-fine-uploader/gallery';
-import 'react-fine-uploader/gallery/gallery.css';
 import update from 'immutability-helper';
 import {PhotosList} from './photos_list'
 
