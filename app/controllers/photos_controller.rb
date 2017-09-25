@@ -19,23 +19,13 @@ class PhotosController < ApplicationController
     end
  end
 
-  def create
-    @photo = Photo.new(image: params[:qqfile])
-    if @photo.save
-      render json: { success: true }
-    else
-      render json: @photo.errors, status: :unprocessable_entity
-    end
-  end
-
 
   def upload
-    @photo = Photo.new
-    @photo.alt_text = params[:qqfilename]
-    @photo.qquuid = params[:qquuid]
-    @photo.image = params[:qqfile]
-    @photo.user_id = current_user.id
-
+    @photo = Photo.new(
+              qquuid:   params[:qquuid],
+              image:    params[:qqfile],
+              user_id:  current_user.id
+    )
     if @photo.save
        respond_to do |format|
           format.json {
@@ -54,13 +44,11 @@ class PhotosController < ApplicationController
   def show
     @photo = current_user.photos.find(params[:id])
     @photos = Photo.photos_to_json(current_user.id)
-
     respond_to do |format|
         format.html { render :index }
         format.json {   render json: Photo.photo_to_json(photo: @photo), "photos": @photos }
     end
   end
-
 
   private
 
